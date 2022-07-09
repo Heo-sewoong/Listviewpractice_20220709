@@ -2,6 +2,7 @@ package com.example.listviewpractice_20220709
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.listviewpractice_20220709.adatpters.StudentListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -38,6 +39,12 @@ class MainActivity : AppCompatActivity() {
 
         mainListView.adapter = mstudentListAdapter
 
-
+        mainListView.setOnItemClickListener{ adapterView, view, i, l ->
+            Toast.makeText(this, "*{position}번째 아이템입니다.", Toast.LENGTH_SHORT).show()
+        }
+        mainListView.setOnItemLongClickListener{ adapterView, view, i, l ->
+            Toast.makeText(this, $"i번째 아이템 롱클릭 이벤트", Toast.LENGTH_SHORT).show()
+            return@setOnItemLongClickListener(true)
+        }
     }
 }
